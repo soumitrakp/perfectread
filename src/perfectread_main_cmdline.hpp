@@ -420,9 +420,6 @@ public:
     }
 
     // Check that required switches are present
-    if(!size_given)
-      error("[-s, --size=uint64] required switch");
-
     if(!db_given)
       error("[-d, --db=string] required switch");
 
@@ -446,8 +443,8 @@ public:
 
 #define ed_main_cmdline_HELP "detect erroneous reads in fasta or fastq files\n\n" \
   "Options (default value in (), *required):\n" \
-  " -s, --size=uint64                       *Number of reads in fasta\n" \
-  " -d, --db=string                         *Input kmer database file created using count subcommand\n" \
+  " -d, --db=string                         *Input kmer database file created using jellyfish count subcommand\n" \
+  " -s, --size=uint64                        Number of reads in to keep in buffer\n" \
   " -t, --threads=uint32                     Number of threads (1)\n" \
   " -Q, --good-qual=uint32                   Good quality value in integer (45)\n" \
   " -q, --excellent-qual=uint32              Excellent quality value in integer (73)\n" \

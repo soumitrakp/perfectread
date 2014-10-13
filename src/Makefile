@@ -15,6 +15,9 @@ all: perfectread
 perfectread: $(OBJS)
 	$(CXX) $(OBJS) -o perfectread $(LDLIBS)
 
+perfectread_main.o: perfectread_main.cc perfectread.hpp  perfectread_main_cmdline.hpp  qual_mer_dna.hpp  sequence_handler.hpp
+	$(CXX) $(CXXFLAGS) -c perfectread_main.cc
+
 clean:
 	rm -f *.o perfectread
 
