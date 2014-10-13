@@ -286,16 +286,6 @@ public:
   bool                           size_given;
   uint32_t                       threads_arg;
   bool                           threads_given;
-  uint32_t                       Files_arg;
-  bool                           Files_given;
-  const char *                   generator_arg;
-  bool                           generator_given;
-  uint32_t                       Generators_arg;
-  bool                           Generators_given;
-  const char *                   shell_arg;
-  bool                           shell_given;
-  const char *                   output_arg;
-  bool                           output_given;
   const char *                   db_arg;
   bool                           db_given;
   uint32_t                       good_qual_arg;
@@ -322,11 +312,6 @@ public:
   ed_main_cmdline() :
     size_arg(), size_given(false),
     threads_arg(1), threads_given(false),
-    Files_arg(1), Files_given(false),
-    generator_arg(""), generator_given(false),
-    Generators_arg(1), Generators_given(false),
-    shell_arg(""), shell_given(false),
-    output_arg("mer_counts.jf"), output_given(false),
     db_arg("mer_counts.jf"), db_given(false),
     good_qual_arg(45), good_qual_given(false),
     excel_qual_arg(73), excel_qual_given(false),
@@ -339,11 +324,6 @@ public:
   ed_main_cmdline(int argc, char* argv[]) :
     size_arg(), size_given(false),
     threads_arg(1), threads_given(false),
-    Files_arg(1), Files_given(false),
-    generator_arg(""), generator_given(false),
-    Generators_arg(1), Generators_given(false),
-    shell_arg(""), shell_given(false),
-    output_arg("mer_counts.jf"), output_given(false),
     db_arg("mer_counts.jf"), db_given(false),
     good_qual_arg(45), good_qual_given(false),
     excel_qual_arg(73), excel_qual_given(false),
@@ -357,11 +337,6 @@ public:
     static struct option long_options[] = {
       {"size", 1, 0, 's'},
       {"threads", 1, 0, 't'},
-      {"Files", 1, 0, 'F'},
-      {"generator", 1, 0, 'g'},
-      {"Generators", 1, 0, 'G'},
-      {"shell", 1, 0, 'S'},
-      {"output", 1, 0, 'o'},
       {"db", 1, 0, 'd'},
       {"good-qual", 1, 0, 'Q'},
       {"excellent-qual", 1, 0, 'q'},
@@ -412,27 +387,6 @@ public:
         threads_given = true;
         threads_arg = conv_uint<uint32_t>((const char*)optarg, err, false);
         CHECK_ERR(uint32_t, optarg, "-t, --threads=uint32")
-        break;
-      case 'F':
-        Files_given = true;
-        Files_arg = conv_uint<uint32_t>((const char*)optarg, err, false);
-        CHECK_ERR(uint32_t, optarg, "-F, --Files=uint32")
-        break;
-      case 'g':
-        generator_given = true;
-        generator_arg = optarg;
-        break;
-      case 'G':
-        Generators_given = true;
-        Generators_arg = conv_uint<uint32_t>((const char*)optarg, err, false);
-        CHECK_ERR(uint32_t, optarg, "-G, --Generators=uint32")
-        break;
-      case 'S':
-        shell_given = true;
-        shell_arg = optarg;
-     case 'o':
-        output_given = true;
-        output_arg = optarg;
         break;
       case 'd':
         db_given = true;
@@ -494,12 +448,7 @@ public:
   "Options (default value in (), *required):\n" \
   " -s, --size=uint64                       *Number of reads in fasta\n" \
   " -d, --db=string                         *Input kmer database file created using count subcommand\n" \
-  " -F, --Files=uint32                       Number files open simultaneously (1)\n" \
-  " -g, --generator=path                     File of commands generating fast[aq]\n" \
-  " -G, --Generators=uint32                  Number of generators run simultaneously (1)\n" \
-  " -S, --shell=string                       Shell used to run generator commands ($SHELL or /bin/sh)\n" \
   " -t, --threads=uint32                     Number of threads (1)\n" \
-  " -o, --output=string                      Output file (mer_counts.jf)\n" \
   " -Q, --good-qual=uint32                   Good quality value in integer (45)\n" \
   " -q, --excellent-qual=uint32              Excellent quality value in integer (73)\n" \
   " -C, --good-count=uint32                  Good count in integer (1)\n" \
@@ -526,11 +475,6 @@ public:
   void dump(::std::ostream &os = std::cout) {
     os << "size_given:" << size_given << " size_arg:" << size_arg << "\n";
     os << "threads_given:" << threads_given << " threads_arg:" << threads_arg << "\n";
-    os << "Files_given:" << Files_given << " Files_arg:" << Files_arg << "\n";
-    os << "generator_given:" << generator_given << " generator_arg:" << generator_arg << "\n";
-    os << "Generators_given:" << Generators_given << " Generators_arg:" << Generators_arg << "\n";
-    os << "shell_given:" << shell_given << " shell_arg:" << shell_arg << "\n";
-    os << "output_given:" << output_given << " output_arg:" << output_arg << "\n";
     os << "db_given:" << db_given << " db_arg:" << db_arg << "\n";
     os << "good_qual_given:" << good_qual_given << " good_qual_arg:" << good_qual_arg << "\n";
     os << "excel_qual_given:" << excel_qual_given << " excel_qual_arg:" << excel_qual_arg << "\n";

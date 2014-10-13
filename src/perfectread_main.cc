@@ -87,10 +87,6 @@ int main(int argc, char *argv[])
 
   args.parse(argc, argv);
 
-  ofstream_default out(args.output_given ? args.output_arg : 0, std::cout);
-  if(!out.good())
-    std::cerr << "Error opening output file '" << args.output_arg << "'";
-
   std::ifstream in(args.db_arg, std::ios::in|std::ios::binary);
   jellyfish::file_header header(in);
   if(!in.good())
@@ -102,7 +98,7 @@ int main(int argc, char *argv[])
   }
   jellyfish::mapped_file binary_map(args.db_arg);
 
-  std::cout << "loaded database \n";
+  std::cout << "Loaded database. Filtering perfect reads.... \n";
 
   auto after_init_time = system_clock::now();
 
