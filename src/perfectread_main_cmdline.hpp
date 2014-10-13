@@ -310,7 +310,7 @@ public:
   };
 
   ed_main_cmdline() :
-    size_arg(), size_given(false),
+    size_arg(1024), size_given(false),
     threads_arg(1), threads_given(false),
     db_arg("mer_counts.jf"), db_given(false),
     good_qual_arg(45), good_qual_given(false),
@@ -444,7 +444,7 @@ public:
 #define ed_main_cmdline_HELP "detect erroneous reads in fasta or fastq files\n\n" \
   "Options (default value in (), *required):\n" \
   " -d, --db=string                         *Input kmer database file created using jellyfish count subcommand\n" \
-  " -s, --size=uint64                        Number of reads in to keep in buffer\n" \
+  " -s, --size=uint64                        Number of reads in to keep in buffer(1024)\n" \
   " -t, --threads=uint32                     Number of threads (1)\n" \
   " -Q, --good-qual=uint32                   Good quality value in integer (45)\n" \
   " -q, --excellent-qual=uint32              Excellent quality value in integer (73)\n" \

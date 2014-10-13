@@ -111,13 +111,10 @@ int main(int argc, char *argv[])
 
   auto after_count_time = system_clock::now();
 
-  std::cout << "Init     " << as_seconds(after_init_time - start_time) << "\n"
-      << "Correction " << as_seconds(after_count_time - after_init_time) << "\n";
-
   if(args.timing_given) {
     std::ofstream timing_file(args.timing_arg);
-    timing_file << "Init     " << as_seconds(after_init_time - start_time) << "\n"
-      << "Correction " << as_seconds(after_count_time - after_init_time) << "\n";
+    timing_file << "Initialize " << as_seconds(after_init_time - start_time) << "\n"
+      << "Filtering " << as_seconds(after_count_time - after_init_time) << "\n";
   }
 
   return 0;
