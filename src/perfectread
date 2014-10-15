@@ -8,9 +8,9 @@ use File::Basename;
 my $dir = dirname(__FILE__);
 
 # Compile time settings
-my $JF_TOP_DIR      = "/home/mitra/tools/jellyfish-2.1.4";
-my $JF_LIB_PATH     = $JF_TOP_DIR."/.lib";
-my $CDB             = $JF_TOP_DIR."/bin/jellyfish";
+my $JELLYFISH       = "/home/mitra/tools/jellyfish-2.1.4";
+my $JF_LIB_PATH     = $JELLYFISH."/.lib";
+my $CDB             = $JELLYFISH."/bin/jellyfish";
 my $EC              = $dir."/perfectread.bin";
 my $PACKAGE_VERSION = "0.0.1";
 
