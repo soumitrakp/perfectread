@@ -10,14 +10,14 @@ LDLIBS += $(JELLYFISH_LIBS)
 
 OBJS =  perfectread_main.o
 
-all: perfectread
+all: perfectread.bin
 
 perfectread: $(OBJS)
-	$(CXX) $(OBJS) -o perfectread $(LDLIBS)
+	$(CXX) $(OBJS) -o perfectread.bin $(LDLIBS)
 
 perfectread_main.o: perfectread_main.cc perfectread.hpp  perfectread_main_cmdline.hpp  qual_mer_dna.hpp  sequence_handler.hpp
 	$(CXX) $(CXXFLAGS) -c perfectread_main.cc
 
 clean:
-	rm -f *.o perfectread
+	rm -f *.o perfectread.bin
 
